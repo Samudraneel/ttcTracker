@@ -25,7 +25,16 @@ def trueLookup(arr, err):
 
 # Get data for stops
 header = stopData.first()
+
+print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', header
+
+
 dataLines = stopData.filter(lambda lines: lines != header)
+
+newheader = dataLines.first()
+
+print '###################################', newheader
+
 dataSplit = dataLines.map(lambda lines: lines.split(','))
 
 # tripID, arrivalID, stopID
