@@ -35,17 +35,13 @@ stops.saveAsTextFile('/data/output/stop')
 # --------------------- trip data setup --------------------- #
 
 header = tripData.first()
-dataLines = tripData.filter(lambda lines: lines != header)
-dataSplit = dataLines.map(lambda lines: lines.split(','))
+trips = tripData.filter(lambda lines: lines != header)\
+        .map(lambda lines: lines.split(','))\
+        .map(lambda lines: (lines[2], lines[0]))
 
-# tripID routeID
-trips = dataSplit.map(lambda lines: (lines[2], lines[0]))
-# Set up the trips as a key value pair
-#tripMap = sc.broadcast(trips.collectAsMap)
+trips.saveAsTextFile('data/output/trips')
 # ----------------------------------------------------------- #
 
-#dataLines.saveAsTextFile('/data/output/stop')
-trips.saveAsTextFile('/data/output/trips')
 
 #features = map(lambda stop, trip: (stop[0], stop[2], trip.myLookup(stop, "No route ID")), stops, tripMap)
 #labels = stops.map(lambda stop: stop[1])
