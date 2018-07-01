@@ -35,7 +35,15 @@ stops = dataSplit.map(lambda lines: (lines[0], unix_convert(lines[1]), lines[3])
 # --------------------- trip data setup --------------------- #
 
 header = tripData.first()
+
+print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX', header,' xxxxxxxxxxxxxxxxxxxxxxxxx'
+
 dataLines = tripData.filter(lambda lines: lines != header)
+
+newheader = dataLines.first()
+
+print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', newheader
+
 dataSplit = dataLines.map(lambda lines: lines.split(','))
 
 # tripID routeID
