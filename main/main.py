@@ -45,7 +45,7 @@ trips = dataSplit.map(lambda lines: (lines[2], lines[0]))
 #tripMap = sc.broadcast(trips.collectAsMap)
 # ----------------------------------------------------------- #
 
-#stops.saveAsTextFile('/data/output/stop')
+stops.saveAsTextFile('/data/output/stop')
 trips.saveAsTextFile('/data/output/trips')
 
 #features = map(lambda stop, trip: (stop[0], stop[2], trip.myLookup(stop, "No route ID")), stops, tripMap)
