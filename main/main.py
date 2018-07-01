@@ -45,7 +45,8 @@ trips = tripData.filter(lambda lines: lines != header)\
 
 
 #features = map(lambda stop, trip: (stop[0], stop[2], trip.myLookup(stop, "No route ID")), stops, tripMap)
-labels = stops.map(lambda stop: stop[1] != None)
+labels = stops.map(lambda stop: stop[1])\
+        .filter(lambda line: line != None)
 
 #features.saveAsTextFile('/data/output/features')
 labels.saveAsTextFile('/data/output/labels')
