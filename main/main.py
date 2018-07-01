@@ -21,23 +21,35 @@ def trueLookup(arr, err):
     else:
         return err
 
-def f(x):
-    return x.split(',')
+# --------------------- stop data setup ---------------------- #
+
+# Get data for stops
+header = stopWords.first()
+DataLines = stopWords.filter(lambda lines: lines != header)
+DataSplit = DataLines.map(lambda lines: lines.split(','))
 
 # tripID, arrivalID, stopID
-stops = map(lambda line: (line[0], unix_convert(line[1]), line[3]), stopWords.foreach(f))
+stops = DataSplit.map(lambda lines: (lines[0], unix_convert(line[1]), line[3]))
+# ----------------------------------------------------------- #
 
-# tripID, routeID
-trips = map(lambda line: (line[2], line[0]), tripArr)
+# --------------------- trip data setup --------------------- #
 
+header = tripWords.first()
+DataLines = tripWords.filter(lambda lines: lines != header)
+DataSplit = DataLines.map(lambda lines: lines.split(','))
+
+# tripID routeID
+trips = DataSplit.map(lambda lines: (lines[2], line[0]))
 # Set up the trips as a key value pair
 tripMap = sc.broadcast(trips.collectAsMap)
+# ----------------------------------------------------------- #
 
-features = map(lambda stop, trip: (stop[0], stop[2], trip.myLookup(stop, "No route ID")), stops, tripMap)
-labels = map(lambda stop: stop[1], stops)
+stops.saveAsTextFile('/data/output/stop')
+tripMap.saveAsTextFile('/data/output/trips')
 
-features.saveAsTextFile('/data/output/features')
-labels.saveAsTextFile('/data/output/labels')
+#features = map(lambda stop, trip: (stop[0], stop[2], trip.myLookup(stop, "No route ID")), stops, tripMap)
+#labels = stops.map(lambda stop: stop[1])
 
-#stopWords.saveAsTextFile('/data/output/stop_times')
-#tripWords.saveAsTextFile('/data/output/trips')
+#features.saveAsTextFile('/data/output/features')
+#labels.saveAsTextFile('/data/output/labels')
+
