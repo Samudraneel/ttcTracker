@@ -28,7 +28,7 @@ header = stopData.first()
 dataLines = stopData.filter(lambda lines: lines != header).map(lambda lines: lines.split(',')).map(lambda lines: (lines[0], lines[1], lines[3]))
 #dataSplit = dataLines.map(lambda lines: lines.split(','))
 
-
+dataLines.saveAsTextFile('/data/output/stop')
 
 # Get data for stops
 
@@ -48,7 +48,7 @@ trips = dataSplit.map(lambda lines: (lines[2], lines[0]))
 #tripMap = sc.broadcast(trips.collectAsMap)
 # ----------------------------------------------------------- #
 
-dataLines.saveAsTextFile('/data/output/stop')
+#dataLines.saveAsTextFile('/data/output/stop')
 trips.saveAsTextFile('/data/output/trips')
 
 #features = map(lambda stop, trip: (stop[0], stop[2], trip.myLookup(stop, "No route ID")), stops, tripMap)
