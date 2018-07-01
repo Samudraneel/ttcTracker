@@ -50,7 +50,10 @@ trips = tripData.filter(lambda lines: lines != header)\
 #trips.saveAsTextFile('data/output/trips')
 # ----------------------------------------------------------- #
 
-features = stops.map(lambda stop: (stop[0], stop[2], trips.get(stop[0], 'No route ID found')))
+#features = stops.map(lambda stop: (stop[0], stop[2], trips.get(stop[0], 'No route ID found')))
+
+for line in stops:
+    return (line[0], line[2], trips.get(stop[0], 'xd'))
 
 #labels = stops.map(lambda stop: stop[1])\
 #        .filter(lambda line: line != None)
