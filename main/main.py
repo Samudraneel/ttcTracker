@@ -55,5 +55,5 @@ features = stops.map(lambda stop: (stop[0], stop[2], trips.get(stop[0], 'No rout
 #labels = stops.map(lambda stop: stop[1])\
 #        .filter(lambda line: line != None)
 
-#features.saveAsTextFile('/data/output/features')
+features.saveAsTextFile('/data/output/features')
 #labels.saveAsTextFile('/data/output/labels')
