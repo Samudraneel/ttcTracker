@@ -12,7 +12,7 @@ stopData = sc.textFile(_dir + 'stop_times.txt')
 tripData = sc.textFile(_dir + 'trips.txt')
 
 def unix_convert(val):
-    print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', val
+    print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n', val, '\n'
     splitVal = val.split(':')
     return str(int(splitVal[0])*60*60 + int(splitVal[1])*60 + int(splitVal[2]))
 
@@ -29,7 +29,7 @@ header = stopData.first()
 dataLines = stopData.filter(lambda lines: lines != header)
 dataSplit = dataLines.map(lambda lines: lines.split(','))
 
-print '@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@', dataSplit.first()
+print '%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%', dataSplit.first()
 
 # tripID, arrivalID, stopID
 stops = dataSplit.map(lambda lines: (lines[0], unix_convert(lines[1]), lines[3]))
