@@ -24,21 +24,13 @@ def trueLookup(arr, err):
 
 # --------------------- stop data setup ---------------------- #
 
-# Get data for stops
 header = stopData.first()
-print 'AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', header
-
 dataLines = stopData.filter(lambda lines: lines != header)
-header = dataLines.first()
-print 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB', header
-
-yolo = dataLines.map(lambda lines: lines.split(','))
-header = yolo.first()
-print 'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD', header
-
 dataSplit = dataLines.map(lambda lines: lines.split(','))
-header = dataSplit.first()
-print 'CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC', header
+
+
+
+# Get data for stops
 
 # tripID, arrivalID, stopID
 stops = dataSplit.map(lambda lines: (lines[0], lines[1], lines[3]))
