@@ -8,7 +8,9 @@ header = data.first()
 
 print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ', header, ' XXXXXXXXXXXXXX'
 
+val = data.filter(lambda line: line!=header)
+
 lines = data.map(lambda line: line.split(','))
 line = lines.map(lambda val: (val[0], val[1]))
 
-data.saveAsTextFile('/data/output/xd')
+val.saveAsTextFile('/data/output/xd')
