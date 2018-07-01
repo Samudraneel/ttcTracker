@@ -30,7 +30,7 @@ dataLines = stopData.filter(lambda lines: lines != header)
 dataSplit = dataLines.map(lambda lines: lines.split(','))
 
 # tripID, arrivalID, stopID
-#stops = dataSplit.map(lambda lines: (lines[0], unix_convert(lines[1]), lines[3]))
+stops = dataSplit.map(lambda lines: (lines[0], lines[1], lines[3]))
 # ----------------------------------------------------------- #
 
 # --------------------- trip data setup --------------------- #
