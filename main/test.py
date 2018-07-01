@@ -6,8 +6,9 @@ sc = SparkContext.getOrCreate()
 data = sc.textFile('/data/ttc/2018-06-29/stop_times.txt')
 header = data.first()
 
+print 'XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX ', header, ' XXXXXXXXXXXXXX'
 
 lines = data.map(lambda line: line.split(','))
 line = lines.map(lambda val: (val[0], val[1]))
 
-header.saveAsTextFile('/data/output/xd')
+data.saveAsTextFile('/data/output/xd')
