@@ -30,7 +30,7 @@ trips = map(lambda line: (line[2], line[0]), tripArr)
 # Set up the trips as a key value pair
 tripMap = sc.broadcast(trips.collectAsMap)
 
-features = map(lambda stop, trip: (stop[0], stop[2], trip.myLookup(stop, "No route ID"), stops, tripMap)
+features = map(lambda stop, trip: (stop[0], stop[2], trip.myLookup(stop, "No route ID")), stops, tripMap)
 labels = map(lambda stop: stop[1], stops)
 
 features.saveAsTextFile('/data/output/features')
