@@ -8,8 +8,8 @@ sc = SparkContext(conf=conf)
 # Read data
 _dir = '/data/ttc/2018-06-29/'
 
-stopWords = sc.textFile(_dir + 'stop_times.txt')
-tripWords = sc.textFile(_dir + 'trips.txt')
+stopData = sc.textFile(_dir + 'stop_times.txt')
+tripData = sc.textFile(_dir + 'trips.txt')
 
 def unix_convert(val):
     splitVal = val.split(':')
@@ -24,22 +24,22 @@ def trueLookup(arr, err):
 # --------------------- stop data setup ---------------------- #
 
 # Get data for stops
-header = stopWords.first()
-DataLines = stopWords.filter(lambda lines: lines != header)
-DataSplit = DataLines.map(lambda lines: lines.split(','))
+header = stopData.first()
+dataLines = stopData.filter(lambda lines: lines != header)
+dataSplit = dataLines.map(lambda lines: lines.split(','))
 
 # tripID, arrivalID, stopID
-stops = DataSplit.map(lambda lines: (lines[0], unix_convert(lines[1]), lines[3]))
+stops = dataSplit.map(lambda lines: (lines[0], unix_convert(lines[1]), lines[3]))
 # ----------------------------------------------------------- #
 
 # --------------------- trip data setup --------------------- #
 
-header = tripWords.first()
-DataLines = tripWords.filter(lambda lines: lines != header)
-DataSplit = DataLines.map(lambda lines: lines.split(','))
+header = tripData.first()
+dataLines = tripData.filter(lambda lines: lines != header)
+dataSplit = dataLines.map(lambda lines: lines.split(','))
 
 # tripID routeID
-trips = DataSplit.map(lambda lines: (lines[2], line[0]))
+trips = dataSplit.map(lambda lines: (lines[2], line[0]))
 # Set up the trips as a key value pair
 #tripMap = sc.broadcast(trips.collectAsMap)
 # ----------------------------------------------------------- #
