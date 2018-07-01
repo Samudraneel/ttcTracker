@@ -12,7 +12,7 @@ stopData = sc.textFile(_dir + 'stop_times.txt')
 tripData = sc.textFile(_dir + 'trips.txt')
 
 def unix_convert(val):
-    if val == 'arriva_time':
+    if val == 'arrival_time':
         return
     splitVal = val.split(':')
     return int(splitVal[0])*60*60 + int(splitVal[1])*60 + int(splitVal[2])
