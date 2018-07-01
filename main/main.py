@@ -6,7 +6,7 @@ conf = SparkConf().setAppName("Test App")
 sc = SparkContext(conf=conf)
 
 # Read data
-_dir = '~/myProjs/data/ttc/2018-06-29/'
+_dir = '/data/ttc/2018-06-29/'
 
 stopWords = sc.textFile(_dir + 'stop_times.txt')
 tripWords = sc.textFile(_dir + 'trips.txt')
