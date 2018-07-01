@@ -23,6 +23,13 @@ def trueLookup(arr, err):
     else:
         return err
 
+def representsInt(s):
+    try:
+        int(s)
+        return s
+    except ValueError:
+        return None
+
 # --------------------- stop data setup ---------------------- #
 
 header = stopData.first()
@@ -43,12 +50,11 @@ trips = tripData.filter(lambda lines: lines != header)\
 #trips.saveAsTextFile('data/output/trips')
 # ----------------------------------------------------------- #
 
-
-features = stops.map(lambda stop: (stop[0], stop[2], trips.filter(lambda trip: trip == stop[0])))
+features = stops.map(lambda stop: (stop[0], stop[2], trips.get(stop[0], 'No route ID found'))
 
 #labels = stops.map(lambda stop: stop[1])\
 #        .filter(lambda line: line != None)
 
-features.saveAsTextFile('/data/output/features')
+#features.saveAsTextFile('/data/output/features')
 #labels.saveAsTextFile('/data/output/labels')
 
