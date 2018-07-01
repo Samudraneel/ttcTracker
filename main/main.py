@@ -40,7 +40,7 @@ dataLines = tripData.filter(lambda lines: lines != header)
 dataSplit = dataLines.map(lambda lines: lines.split(','))
 
 # tripID routeID
-trips = dataSplit.map(lambda lines: (lines[2], line[0]))
+trips = dataSplit.map(lambda lines: (lines[2], lines[0]))
 # Set up the trips as a key value pair
 #tripMap = sc.broadcast(trips.collectAsMap)
 # ----------------------------------------------------------- #
