@@ -32,7 +32,7 @@ dataLines = stopData.filter(lambda lines: lines != header)
 header = dataLines.first()
 print 'BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB', header
 
-yolo = dataLines.map(lambda lines: lines.split(',')
+yolo = dataLines.map(lambda lines: lines.split(','))
 header = yolo.first()
 print 'DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD', header
 
