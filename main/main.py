@@ -13,7 +13,7 @@ tripWords = sc.textFile(_dir + 'trips.txt')
 
 def unix_convert(val):
     splitVal = val.split(':')
-    return str(int(splitVal[0])*60*60 + int(splitVal[1])*60 + int(splitVal))
+    return str(int(splitVal[0])*60*60 + int(splitVal[1])*60 + int(splitVal[2]))
 
 def trueLookup(arr, err):
     if arr[0]:
