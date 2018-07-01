@@ -41,7 +41,7 @@ DataSplit = DataLines.map(lambda lines: lines.split(','))
 # tripID routeID
 trips = DataSplit.map(lambda lines: (lines[2], line[0]))
 # Set up the trips as a key value pair
-tripMap = sc.broadcast(trips.collectAsMap)
+#tripMap = sc.broadcast(trips.collectAsMap)
 # ----------------------------------------------------------- #
 
 stops.saveAsTextFile('/data/output/stop')
