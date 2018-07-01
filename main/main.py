@@ -47,5 +47,5 @@ trips = tripData.filter(lambda lines: lines != header)\
 labels = stops.map(lambda stop: stop[1])
 
 #features.saveAsTextFile('/data/output/features')
-#labels.saveAsTextFile('/data/output/labels')
+labels.saveAsTextFile('/data/output/labels')
 
