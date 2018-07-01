@@ -21,8 +21,11 @@ def trueLookup(arr, err):
     else:
         return err
 
+def f(x):
+    return x.split(',')
+
 # tripID, arrivalID, stopID
-stops = map(lambda line: (line[0], unix_convert(line[1]), line[3]), stopWords)
+stops = map(lambda line: (line[0], unix_convert(line[1]), line[3]), stopWords.foreach(f))
 
 # tripID, routeID
 trips = map(lambda line: (line[2], line[0]), tripArr)
