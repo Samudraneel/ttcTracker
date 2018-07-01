@@ -44,7 +44,7 @@ trips = tripData.filter(lambda lines: lines != header)\
 # ----------------------------------------------------------- #
 
 
-features = stop.map(lambda stop: (stop[0], stop[2], trips.filter(lambda trip: trip == stop[0])))
+features = stops.map(lambda stop: (stop[0], stop[2], trips.filter(lambda trip: trip == stop[0])))
 
 #labels = stops.map(lambda stop: stop[1])\
 #        .filter(lambda line: line != None)
