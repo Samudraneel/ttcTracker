@@ -25,7 +25,7 @@ def trueLookup(arr, err):
 # --------------------- stop data setup ---------------------- #
 
 header = stopData.first()
-dataLines = stopData.filter(lambda lines: lines != header).map(lambda lines: lines.split(',').map(lambda lines: (lines[0], lines[1], lines[3]))
+dataLines = stopData.filter(lambda lines: lines != header).map(lambda lines: lines.split(',')).map(lambda lines: (lines[0], lines[1], lines[3]))
 #dataSplit = dataLines.map(lambda lines: lines.split(','))
 
 
