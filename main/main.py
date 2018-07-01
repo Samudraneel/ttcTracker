@@ -13,7 +13,7 @@ tripData = sc.textFile(_dir + 'trips.txt')
 
 def unix_convert(val):
     if val == 'arriva_time':
-        return 'ERROR'
+        return
     splitVal = val.split(':')
     return int(splitVal[0])*60*60 + int(splitVal[1])*60 + int(splitVal[2])
 
@@ -48,5 +48,5 @@ trips = tripData.filter(lambda lines: lines != header)\
 labels = stops.map(lambda stop: stop[1])
 
 #features.saveAsTextFile('/data/output/features')
-#labels.saveAsTextFile('/data/output/labels')
+labels.saveAsTextFile('/data/output/labels')
 
