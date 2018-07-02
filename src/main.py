@@ -15,7 +15,7 @@ stops.rdd.saveAsTextFile('/data/output/stop')
 # --------------------- trip data setup --------------------- #
 trips = tripRDD.RDDTrips()
 
-trips.map.saveAsTextFile('data/output/trips')
+trips.rdd.saveAsTextFile('data/output/trips')
 # ----------------------------------------------------------- #
 
 features = model.features.setFeatures(stops.rdd, tripMap)
