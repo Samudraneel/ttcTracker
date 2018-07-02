@@ -3,7 +3,7 @@
 
 from pyspark import SparkContext
 import config
-import helper
+import helper as local
 
 class RDDStops():
     def __init__(self):
