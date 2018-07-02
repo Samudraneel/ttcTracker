@@ -1,2 +1,2 @@
-import setFeatures
-import setLabels
+import features
+import labels
