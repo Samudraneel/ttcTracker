@@ -5,7 +5,7 @@ import common.rddTrips as tripRDD
 import modelSetup as model
 
 sc = SparkContext.getOrCreate()
-sc.addPyFile('/data/ttcTracker/src.zip')
+sc.addPyFile('/data/ttcTracker/src/all.zip')
 
 # --------------------- stop data setup ---------------------- #
 stops = stopRDD.RDDStops()
