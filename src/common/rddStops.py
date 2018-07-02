@@ -5,15 +5,17 @@ from pyspark import SparkContext
 import initialize
 import helper
 
-# Initialize all data regarding stops
-sc = SparkContext.getOrCreate()
-data = sc.textFile(initialize._dataDir + initialize._stops)
+class RDDStops():
+    def __init__(self):
+        # Initialize all data regarding stops
+        sc = SparkContext.getOrCreate()
+        data = sc.textFile(initialize._dataDir + initialize._stops)
 
-# Header required to remove the first row
-header = data.first()
-stops = data.filter(lambda lines: lines != header)\
-        .map(lambda lines: lines.split(','))\
-        .map(lambda lines: (lines[0], local.unix_convert(lines[1]), lines[3]))
+        # Header required to remove the first row
+        header = data.first()
+        self.stops = data.filter(lambda lines: lines != header)\
+                    .map(lambda lines: lines.split(','))\
+                    .map(lambda lines: (lines[0], local.unix_convert(lines[1]), lines[3]))
 
-def getStopRDD():
-    return stops
+    def getStopRDD():
+        return self.stops

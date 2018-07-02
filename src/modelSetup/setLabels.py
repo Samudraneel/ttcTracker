@@ -1,10 +1,6 @@
 # Initialize labels
 
-import commons.rddStops as rddStops
-
-stopsRDD = rddStops.getStopRDD()
-
-labels = stops.map(lambda stop: stop[1])
-
-def getLabels():
+def setLabels(stopsRDD):
+    labels = stopsRDD.map(lambda stop: stop[1])\
+            .filter(lambda line: line != None)
     return labels
