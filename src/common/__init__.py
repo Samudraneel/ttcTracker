@@ -1,4 +1,4 @@
 import helper
-import initialize
+import config
 import rddStops
 import rddTrips

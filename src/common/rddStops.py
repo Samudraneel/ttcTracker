@@ -2,14 +2,14 @@
 # Stops RDD will have to be passed in
 
 from pyspark import SparkContext
-import initialize
+import config
 import helper
 
 class RDDStops():
     def __init__(self):
         # Initialize all data regarding stops
         sc = SparkContext.getOrCreate()
-        data = sc.textFile(initialize._dataDir + initialize._stops)
+        data = sc.textFile(config._dataDir + config._stops)
 
         # Header required to remove the first row
         header = data.first()
