@@ -37,7 +37,7 @@ stops = stopData.filter(lambda lines: lines != header)\
         .map(lambda lines: lines.split(','))\
         .map(lambda lines: (lines[0], unix_convert(lines[1]), lines[3]))
 
-#stops.saveAsTextFile('/data/output/stop')
+stops.saveAsTextFile('/data/output/stop')
 # ----------------------------------------------------------- #
 
 # --------------------- trip data setup --------------------- #
@@ -49,14 +49,14 @@ trips = tripData.filter(lambda lines: lines != header)\
 
 tripMap = trips.collectAsMap()
 
-#trips.saveAsTextFile('data/output/trips')
+trips.saveAsTextFile('data/output/trips')
 # ----------------------------------------------------------- #
 
 features = stops.map(lambda stop: (stop[0], stop[2], tripMap.get(stop[0], 'No route ID found')))
 
 
-#labels = stops.map(lambda stop: stop[1])\
-#        .filter(lambda line: line != None)
+labels = stops.map(lambda stop: stop[1])\
+        .filter(lambda line: line != None)
 
 features.saveAsTextFile('/data/output/features')
-#labels.saveAsTextFile('/data/output/labels')
+labels.saveAsTextFile('/data/output/labels')
