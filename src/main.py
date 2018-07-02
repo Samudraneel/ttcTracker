@@ -1,8 +1,11 @@
 # PySpark implementation will be done here
-from pyspark import SparkContext, SparkConf
+from pyspark import SparkContext
 import common.rddStops as stopRDD
 import common.rddTrips as tripRDD
 import modelSetup as model
+
+sc = SparkContext.getOrCreate()
+sc.addPyFile('../src.zip')
 
 # --------------------- stop data setup ---------------------- #
 stops = stopRDD.RDDStops()
