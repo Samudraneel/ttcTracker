@@ -17,5 +17,5 @@ class RDDStops():
                     .map(lambda lines: lines.split(','))\
                     .map(lambda lines: (lines[0], local.unix_convert(lines[1]), lines[3]))
 
-    def getStopRDD():
+    def getStopRDD(self):
         return self.stops

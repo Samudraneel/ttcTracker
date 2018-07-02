@@ -19,8 +19,8 @@ class RDDTrips():
                 .map(lambda lines: lines.split(','))\
                 .map(lambda lines: (lines[2], lines[0]))
 
-        def getTripRDD():
+        def getTripRDD(self):
             return self.trips
 
-        def getTripMap():
+        def getTripMap(self):
             return self.trips.collectAsMap()
