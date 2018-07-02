@@ -3,7 +3,6 @@
 
 from pyspark import SparkContext
 import config
-import helper
 
 class RDDTrips():
     def __init__(self):
