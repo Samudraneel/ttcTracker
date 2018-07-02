@@ -47,12 +47,13 @@ trips = tripData.filter(lambda lines: lines != header)\
         .map(lambda lines: lines.split(','))\
         .map(lambda lines: (lines[2], lines[0]))
 
-#trips.saveAsTextFile('data/output/trips')
+tripMap = trips.collectAsMap()
+
+tripMap.saveAsTextFile('data/output/trips')
 # ----------------------------------------------------------- #
 
 #features = stops.map(lambda stop: (stop[0], stop[2], trips.get(stop[0], 'No route ID found')))
 
-temp = (stops, trips).map(lambda (stop, trip): (stop[0], trip[0]))
 
 #labels = stops.map(lambda stop: stop[1])\
 #        .filter(lambda line: line != None)
