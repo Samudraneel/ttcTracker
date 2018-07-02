@@ -3,7 +3,7 @@
 
 from pyspark import SparkContext
 import config
-import helper as local
+import helper
 
 class RDDStops():
     def __init__(self):
@@ -15,7 +15,7 @@ class RDDStops():
         header = data.first()
         self.stops = data.filter(lambda lines: lines != header)\
                     .map(lambda lines: lines.split(','))\
-                    .map(lambda lines: (lines[0], local.unix_convert(lines[1]), lines[3]))
+                    .map(lambda lines: (lines[0], helper.unix_convert(lines[1]), lines[3]))
 
     def getStopRDD(self):
         return self.stops
