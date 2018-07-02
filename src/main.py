@@ -18,7 +18,7 @@ trips = tripRDD.RDDTrips()
 trips.rdd.saveAsTextFile('data/output/trips')
 # ----------------------------------------------------------- #
 
-features = model.features.setFeatures(stops.rdd, tripMap)
+features = model.features.setFeatures(stops.rdd, trips.map)
 
 labels = model.labels.setLabels(stops.rdd)
 
