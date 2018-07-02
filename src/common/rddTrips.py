@@ -8,18 +8,14 @@ class RDDTrips():
     def __init__(self):
         # Initialize all data regarding stops
         sc = SparkContext.getOrCreate()
-        data = sc.textFile(config._dataDir + config._trips)
+        self.data = sc.textFile(config._dataDir + config._trips)
 
         # Header required to remove the first row
-        header = data.first()
+        header = self.data.first()
 
         # Set up the trip RDD
-        self.trips = data.filter(lambda lines: lines != header)\
+        self.rdd = self.data.filter(lambda lines: lines != header)\
                     .map(lambda lines: lines.split(','))\
                     .map(lambda lines: (lines[2], lines[0]))
 
-    def getTripRDD(self):
-        return self.trips
-
-    def getTripMap(self):
-        return self.trips.collectAsMap()
+        self.map = self.rdd.collectAsMap()

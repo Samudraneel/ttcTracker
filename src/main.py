@@ -6,20 +6,18 @@ import modelSetup as model
 
 # --------------------- stop data setup ---------------------- #
 stops = stopRDD.RDDStops()
-rddStops = stops.getStopRDD()
-rddStops.saveAsTextFile('/data/output/stop')
+stops.rdd.saveAsTextFile('/data/output/stop')
 # ----------------------------------------------------------- #
 
 # --------------------- trip data setup --------------------- #
 trips = tripRDD.RDDTrips()
-tripMap = trips.getTripMap()
 
-trips.getTripRDD.saveAsTextFile('data/output/trips')
+trips.map.saveAsTextFile('data/output/trips')
 # ----------------------------------------------------------- #
 
-features = model.features.setFeatures(rddStops, tripMap)
+features = model.features.setFeatures(stops.rdd, tripMap)
 
-labels = model.labels.setLabels(rddStops)
+labels = model.labels.setLabels(stops.rdd)
 
 features.saveAsTextFile('/data/output/features')
 labels.saveAsTextFile('/data/output/labels')
