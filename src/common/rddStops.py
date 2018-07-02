@@ -3,7 +3,6 @@
 
 from pyspark import SparkContext
 import config
-import func
 
 class RDDStops():
     def __init__(self):
@@ -15,7 +14,13 @@ class RDDStops():
         header = data.first()
         self.stops = data.filter(lambda lines: lines != header)\
                     .map(lambda lines: lines.split(','))\
-                    .map(lambda lines: (lines[0], func.unix_convert(lines[1]), lines[3]))
+                    .map(lambda lines: (lines[0], self.unix_convert(lines[1]), lines[3]))
 
     def getStopRDD(self):
         return self.stops
+
+    def unix_convert(self, val):
+        if val == 'arrival_time':
+            return
+        splitVal = val.split(':')
+        return int(splitVal[0])*60*60 + int(splitVal[1])*60 + int(splitVal[2])
