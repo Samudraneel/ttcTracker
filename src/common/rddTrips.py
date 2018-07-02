@@ -16,11 +16,11 @@ class RDDTrips():
 
         # Set up the trip RDD
         self.trips = data.filter(lambda lines: lines != header)\
-                .map(lambda lines: lines.split(','))\
-                .map(lambda lines: (lines[2], lines[0]))
+                    .map(lambda lines: lines.split(','))\
+                    .map(lambda lines: (lines[2], lines[0]))
 
-        def getTripRDD(self):
-            return self.trips
+    def getTripRDD(self):
+        return self.trips
 
-        def getTripMap(self):
-            return self.trips.collectAsMap()
+    def getTripMap(self):
+        return self.trips.collectAsMap()
